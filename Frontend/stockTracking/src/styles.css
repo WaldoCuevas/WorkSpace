@@ -1,1 +1,5 @@
 /* You can add global styles to this file, and also import other style files */
+
+#fondo-index {
+    background-image: linear-gradient(to right, #f4aefa , #aef4fa);
+}

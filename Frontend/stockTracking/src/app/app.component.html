@@ -1,34 +1,55 @@
-<nav class="navbar navbar-expand-sm bg-dark navbar-dark text-white">
-  <ul class="navbar-nav">
-    <li class="nav-item">
-      <a routerLink="lista-usuarios" routerLinkActive="active" class="nav-link"
-        >Lista de Usuarios</a
-      >
-    </li>
-    <li class="nav-item">
-      <a
-        routerLink="registrar-usuario"
-        routerLinkActive="active"
-        class="nav-link"
-        >Añadir Usuario</a
-      >
-    </li>
-    <li class="nav-item">
-      <a routerLink="lista-productos" routerLinkActive="active" class="nav-link"
-        >Lista de Productos</a
-      >
-    </li>
-    <li class="nav-item">
-      <a
-        routerLink="registrar-producto"
-        routerLinkActive="active"
-        class="nav-link"
-        >Añadir Producto</a
-      >
-    </li>
-  </ul>
-</nav>
-<h1 class="text-center">{{ title }}</h1>
-<div class="container">
-  <router-outlet></router-outlet>
-</div>
+<body id="fondo-app">
+  <h1 id="myText" class="text-center">{{ title }}</h1>
+
+  <nav class="navbar navbar-expand-sm bg-dark navbar-dark text-white">
+    <ul class="navbar-nav">
+      <li class="nav-item">
+        <a routerLink="lista-usuarios" routerLinkActive="active" class="nav-link aHovers"
+          >Lista de Usuarios</a
+        >
+      </li>
+      <li class="nav-item">
+        <a
+          routerLink="registrar-usuario"
+          routerLinkActive="active"
+          class="nav-link aHovers"
+          >Añadir Usuario</a
+        >
+      </li>
+      <li class="nav-item">
+        <a routerLink="lista-productos" routerLinkActive="active" class="nav-link aHovers"
+          >Lista de Productos</a
+        >
+      </li>
+      <li class="nav-item">
+        <a
+          routerLink="registrar-producto"
+          routerLinkActive="active"
+          class="nav-link aHovers"
+          >Añadir Producto</a
+        >
+      </li>
+    </ul>
+  </nav>
+
+  <div class="container">
+    <router-outlet></router-outlet>
+  </div>
+
+  <footer>
+    <nav class="navbar fixed-bottom" style="background-color: #1f1f1f">
+      <ul class="nav">
+        <li class="nav-item">
+          <a class="nav-link aHovers" href="mailto:waldo456123@gmail.com">Contactenos</a>
+        </li>
+        <li class="nav-item">
+          <a class="nav-link aHovers" href="mailto:aledalzotto15@gmail.com">Contactenos</a>
+        </li>
+      </ul>
+    </nav>
+  </footer>
+</body>
+
+
+
+

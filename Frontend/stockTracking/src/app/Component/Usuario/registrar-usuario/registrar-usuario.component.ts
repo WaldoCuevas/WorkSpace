@@ -21,11 +21,11 @@ export class RegistrarUsuarioComponent implements OnInit {
     this.usuarioServicio.registrarUsuario(this.usuario).subscribe(dato => {
       console.log(dato);
       this.goToListaUsuarios();
-    },);
+    });
   }
 
   goToListaUsuarios() {
-    this.router.navigate(['/usuarios'])
+    this.router.navigate(['/lista-usuarios'])
   }
 
   onSubmit() {

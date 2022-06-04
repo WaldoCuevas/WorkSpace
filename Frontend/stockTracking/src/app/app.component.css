@@ -1,0 +1,46 @@
+#fondo-app {
+    background-image: linear-gradient(to right, #f4aefa, #aef4fa);
+}
+
+h1 {
+    padding: 3rem 2rem;
+    background-color: #212529;
+    color: #fff;
+    margin-bottom: 0;
+    transition: color 0.3s ease;
+}
+
+#myText {
+    animation: text 10s infinite;
+}
+
+@keyframes text {
+    0% {
+        color: #f37afe;
+    }
+
+    25% {
+        color: #7ad2fe;
+    }
+
+    50% {
+        color: #ecfe7a;
+    }
+
+    75% {
+        color: #fe7a7a;
+    }
+
+    100% {
+        color: #f37afe;
+    }
+}
+
+.aHovers {
+    color: #fff;
+    transition: color 0.3s ease;
+}
+
+.aHovers:hover {
+    color: #f00;
+}
