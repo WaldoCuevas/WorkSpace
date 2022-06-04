@@ -1,0 +1,22 @@
+<h2>Lista empleados</h2>
+<table class="table table-striped">
+    <thead class="table-dark">
+        <tr>
+            <th>Nombre</th>
+            <th>Apellido</th>
+            <th>Email</th>
+            <th>Edad</th>
+            <th>Rol</th>
+        </tr>
+    </thead>
+    <tbody>
+        <tr *ngFor="let user of usuarios">
+            <td>{{user.nombre}}</td>
+            <td>{{user.apellido}}</td>
+            <td>{{user.email}}</td>
+            <td>{{user.edad}}</td>
+            <td *ngIf="user.rol">Administrador</td>
+            <td *ngIf="!user.rol">Usuario</td>
+        </tr>
+    </tbody>
+</table>
