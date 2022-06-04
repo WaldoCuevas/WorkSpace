@@ -12,15 +12,15 @@ import { RegistrarProductoComponent } from './Component/Producto/registrar-produ
 
 const routes: Routes = [
   //Rutas para usuarios
-  { path: 'usuarios', component: ListaUsuariosComponent },
-  { path: 'u', redirectTo: 'usuarios', pathMatch: 'full' },
+  { path: 'lista-usuarios', component: ListaUsuariosComponent },
+  { path: 'u', redirectTo: 'lista-usuarios', pathMatch: 'full' },
   { path: 'registrar-usuario', component: RegistrarUsuarioComponent },
 
   //rutas para productos
   { path: 'registrar-producto', component: RegistrarProductoComponent },
-  { path: 'productos', component: ListaProductoComponent },
+  { path: 'lista-productos', component: ListaProductoComponent },
   { path: 'actualizar-producto/:id', component: ModificarProductoComponent },
-  { path: 'p', redirectTo: 'productos', pathMatch: 'full' },
+  { path: 'p', redirectTo: 'lista-productos', pathMatch: 'full' },
 ];
 
 @NgModule({
