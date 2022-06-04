@@ -27,7 +27,7 @@ export class RegistrarProductoComponent implements OnInit {
   }
 
   irALaListaDeProductos(){
-    this.router.navigate(['/productos']);
+    this.router.navigate(['/lista-productos']);
   }
 
   onSubmit(){
