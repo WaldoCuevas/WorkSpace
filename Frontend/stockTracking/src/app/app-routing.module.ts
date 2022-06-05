@@ -4,6 +4,7 @@ import { RouterModule, Routes } from '@angular/router';
 //Import de Usuario
 import { ListaUsuariosComponent } from './Component/Usuario/lista-usuarios/lista-usuarios.component';
 import { RegistrarUsuarioComponent } from './Component/Usuario/registrar-usuario/registrar-usuario.component';
+import { IniciarSesionComponent } from './Component/Usuario/iniciar-sesion/iniciar-sesion/iniciar-sesion.component';
 
 //Import de Producto
 import { ListaProductoComponent } from './Component/Producto/lista-producto/lista-producto.component';
@@ -13,14 +14,16 @@ import { RegistrarProductoComponent } from './Component/Producto/registrar-produ
 const routes: Routes = [
   //Rutas para usuarios
   { path: 'lista-usuarios', component: ListaUsuariosComponent },
-  { path: 'u', redirectTo: 'lista-usuarios', pathMatch: 'full' },
   { path: 'registrar-usuario', component: RegistrarUsuarioComponent },
+
 
   //rutas para productos
   { path: 'registrar-producto', component: RegistrarProductoComponent },
   { path: 'lista-productos', component: ListaProductoComponent },
   { path: 'actualizar-producto/:id', component: ModificarProductoComponent },
-  { path: 'p', redirectTo: 'lista-productos', pathMatch: 'full' },
+
+
+  { path: '', component: IniciarSesionComponent, pathMatch: "full"},
 ];
 
 @NgModule({

@@ -14,6 +14,7 @@ import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
 import { HttpClientModule } from '@angular/common/http';
 import { FormsModule } from '@angular/forms';
+import { IniciarSesionComponent } from './Component/Usuario/iniciar-sesion/iniciar-sesion/iniciar-sesion.component';
 
 @NgModule({
   declarations: [
@@ -22,7 +23,8 @@ import { FormsModule } from '@angular/forms';
     RegistrarUsuarioComponent,
     ListaProductoComponent,
     ModificarProductoComponent,
-    RegistrarProductoComponent
+    RegistrarProductoComponent,
+    IniciarSesionComponent
   ],
   imports: [
     BrowserModule,
