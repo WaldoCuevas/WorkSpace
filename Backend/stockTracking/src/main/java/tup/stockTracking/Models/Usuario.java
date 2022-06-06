@@ -31,16 +31,28 @@ public class Usuario {
     @Column(name = "rol")
     private Boolean rol;
 
+    @Column(name = "password")
+    private String password;
+
     public Usuario() {
     }
 
-    public Usuario(Long id, String nombre, String apellido, String email, Integer edad, Boolean rol) {
+    public Usuario(Long id, String nombre, String apellido, String email, Integer edad, Boolean rol,String password) {
         this.id = id;
         this.nombre = nombre;
         this.apellido = apellido;
         this.email = email;
         this.edad = edad;
         this.rol = rol;
+        this.password = password;
+    }
+    
+    public String getPassword() {
+        return password;
+    }
+
+    public void setPassword(String password) {
+        this.password = password;
     }
 
     public Long getId() {
