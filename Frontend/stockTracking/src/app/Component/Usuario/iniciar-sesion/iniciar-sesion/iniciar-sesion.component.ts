@@ -24,7 +24,7 @@ export class IniciarSesionComponent implements OnInit {
 
   verificacion(){
 
-      this.servicio.getListaCredenciales().subscribe(dato => {
+      this.servicio.obtenerCredenciales(this.credenciales).subscribe(dato => {
         console.log(dato);
         this.irALaListaDeUsuario();
       });

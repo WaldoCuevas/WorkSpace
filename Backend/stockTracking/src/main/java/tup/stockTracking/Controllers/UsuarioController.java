@@ -35,7 +35,7 @@ public class UsuarioController {
     }
 
     @GetMapping("/credenciales")
-    public List<Credenciales> listarUsuarios2() {
+    public List<Credenciales> listarCredenciales() {
         return credencialesRepository.findAll();
     }
 
@@ -44,8 +44,8 @@ public class UsuarioController {
         return UserRepository.save(u);
     }
 
-    @GetMapping("/usuarios/credenciales/{id}")
-    public Credenciales obtenerUsuarioById(@PathVariable Long id){
+    @GetMapping("/credenciales/{id}")
+    public Credenciales obtenerUsuarioById(@PathVariable Long id) {
 
         Credenciales credencial = credencialesRepository.findById(id)
                 .orElseThrow(() -> new ResourceNotFoundException("No existe el producto con el id: " + id));
@@ -53,18 +53,16 @@ public class UsuarioController {
         return credencial;
     }
 
-    @PostMapping("/usuarios/credenciales")
+    @PostMapping("/credenciales")
     public ResponseEntity<Credenciales> verificarCredenciales(@RequestBody Credenciales requestCredencial) {
 
-        Credenciales credencial = obtenerUsuarioById(1L);
+        Credenciales credencial = obtenerUsuarioById(requestCredencial.getId());
 
-        
-        if (credencial.equals(requestCredencial)){
-            return null;
+        if (credencial.getId() == requestCredencial.getId()) {
+            return ResponseEntity.ok(credencial);
+
         }
-            
-            return ResponseEntity.ok(requestCredencial);
-
+        return null;
 
     }
 

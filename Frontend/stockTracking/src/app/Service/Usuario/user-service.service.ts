@@ -12,7 +12,7 @@ export class UserServiceService {
 
   private baseUrl = "http://localhost:8080/api/usuarios";
 
-  private urlCredenciales = "http://localhost:8080/api/credenciales";
+  private urlCredenciales = "http://localhost:8080/api/credenciales/";
 
   constructor(private httpClient: HttpClient) { }
 
