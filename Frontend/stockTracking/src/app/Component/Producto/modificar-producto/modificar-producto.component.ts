@@ -20,7 +20,7 @@ export class ModificarProductoComponent implements OnInit {
     this.id = this.route.snapshot.params['id'];
     this.servicio.obtenerProductoPorId(this.id).subscribe(dato =>{
       this.producto = dato;
-    })
+    });
   }
 
   irALaListaDeProducto(){

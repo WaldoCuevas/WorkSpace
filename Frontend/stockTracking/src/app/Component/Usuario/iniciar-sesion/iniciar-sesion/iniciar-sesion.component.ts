@@ -1,7 +1,8 @@
+import { Credenciales } from './../../../../Models/Usuario/credenciales';
+import { UserServiceService } from './../../../../Service/Usuario/user-service.service';
 import { Component, OnInit } from '@angular/core';
 
-import { Usuario } from 'src/app/Models/Usuario/usuario';
-import { Router } from '@angular/router';
+import { Router, ActivatedRoute } from '@angular/router';
 
 @Component({
   selector: 'app-iniciar-sesion',
@@ -10,32 +11,26 @@ import { Router } from '@angular/router';
 })
 export class IniciarSesionComponent implements OnInit {
 
-  usuario: Usuario = new Usuario();
-  email:String;
-  password:String;
+  credenciales:Credenciales = new Credenciales();
 
-  constructor(private router:Router) { }
+  constructor(private router:Router, private route:ActivatedRoute, private servicio:UserServiceService) { }
 
   ngOnInit(): void {
-    this.email = "Waldo@gmail.com";
-    this.password = "123";
   }
 
-  onSubmit(){
+  iniciarSesion(){
     this.verificacion();
   };
 
   verificacion(){
 
-    if (this.usuario.email == this.email && this.usuario.password == this.password){
-      console.log(this.email);
-      console.log(this.password);
-      this.irALaListaDeUsuario();
-    } else {
-      alert("datos invalidos, ingrese datos validos");
-    }
-
+      this.servicio.getListaCredenciales().subscribe(dato => {
+        console.log(dato);
+        this.irALaListaDeUsuario();
+      });
   }
+
+
 
   irALaListaDeUsuario(){
     this.router.navigate(['lista-usuarios']);

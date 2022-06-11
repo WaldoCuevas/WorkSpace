@@ -34,6 +34,7 @@ public class ProductoController {
     public List<Producto> listarTodosLosProductos() {
         return repository.findAll();
     }
+    
 
     // Este metodo sirve para guardar un producto
     @PostMapping("/productos")

@@ -15,7 +15,7 @@ const routes: Routes = [
   //Rutas para usuarios
   { path: 'lista-usuarios', component: ListaUsuariosComponent },
   { path: 'registrar-usuario', component: RegistrarUsuarioComponent },
-
+  { path: 'iniciar-sesion', component: IniciarSesionComponent, },
 
   //rutas para productos
   { path: 'registrar-producto', component: RegistrarProductoComponent },
