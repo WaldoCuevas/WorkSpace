@@ -28,8 +28,8 @@ export class UserServiceService {
     return this.httpClient.get<Credenciales[]>(`${this.urlCredenciales}`);
   }
 
-  obtenerCredenciales(credencial:Credenciales): Observable<Object> {
-    return this.httpClient.post<Credenciales>(`${this.urlCredenciales}`,credencial);
+  login(credencial:Credenciales): Observable<Object> {
+    return this.httpClient.post(`${this.urlCredenciales}`,credencial);
   }
 
 }

@@ -30,7 +30,7 @@ import { IniciarSesionComponent } from './Component/Usuario/iniciar-sesion/inici
     BrowserModule,
     AppRoutingModule,
     HttpClientModule,
-    FormsModule
+    FormsModule,
   ],
   providers: [],
   bootstrap: [AppComponent]

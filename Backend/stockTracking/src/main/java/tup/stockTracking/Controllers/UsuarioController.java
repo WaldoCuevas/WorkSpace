@@ -2,6 +2,7 @@ package tup.stockTracking.Controllers;
 
 import java.util.List;
 
+import org.hibernate.sql.Template;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.CrossOrigin;
@@ -45,25 +46,42 @@ public class UsuarioController {
     }
 
     @GetMapping("/credenciales/{id}")
-    public Credenciales obtenerUsuarioById(@PathVariable Long id) {
+    public Credenciales obtenerCredencialById(@PathVariable Long id) {
 
         Credenciales credencial = credencialesRepository.findById(id)
-                .orElseThrow(() -> new ResourceNotFoundException("No existe el producto con el id: " + id));
+                .orElseThrow(() -> new ResourceNotFoundException("No existe el usuario con ese id: " + id));
 
         return credencial;
     }
 
+
+
     @PostMapping("/credenciales")
     public ResponseEntity<Credenciales> verificarCredenciales(@RequestBody Credenciales requestCredencial) {
 
-        Credenciales credencial = obtenerUsuarioById(requestCredencial.getId());
+        Credenciales credencial = obtenerCredencialById(requestCredencial.getId());
 
-        if (credencial.getId() == requestCredencial.getId()) {
-            return ResponseEntity.ok(credencial);
+        if (credencial.getId().equals(requestCredencial.getId())) {
+            ResponseEntity.ok("id verificado");
 
-        }
+            if (credencial.getEmail().equals(requestCredencial.getEmail())){
+                ResponseEntity.ok("email verificado");
+
+                if (credencial.getPassword().equals(requestCredencial.getPassword())){
+                    ResponseEntity.ok("password verificado");
+                    
+                    ResponseEntity.ok("Credenciales verificadas");
+
+                    return ResponseEntity.ok(credencial);
+
+                } ResponseEntity.ok("Fallo con el password");
+                return null;
+
+            } ResponseEntity.ok("Fallo con el email");
+            return null;
+
+        } ResponseEntity.ok("Fallo con el id");
         return null;
-
-    }
+}
 
 }
