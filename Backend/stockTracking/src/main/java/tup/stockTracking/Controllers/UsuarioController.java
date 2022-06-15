@@ -2,22 +2,22 @@ package tup.stockTracking.Controllers;
 
 import java.util.List;
 
-import org.hibernate.sql.Template;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.CrossOrigin;
+import org.springframework.web.bind.annotation.DeleteMapping;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
+import org.springframework.web.bind.annotation.PutMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
-import tup.stockTracking.Exceptions.ResourceNotFoundException;
 import tup.stockTracking.Models.Credenciales;
 import tup.stockTracking.Models.Usuario;
-import tup.stockTracking.Repository.CredencialesRepository;
-import tup.stockTracking.Repository.UsuarioRepository;
+import tup.stockTracking.Service.UsuarioService.UsuarioServiceImp;
 
 @RestController
 @RequestMapping("/api/")
@@ -25,63 +25,50 @@ import tup.stockTracking.Repository.UsuarioRepository;
 public class UsuarioController {
 
     @Autowired
-    private UsuarioRepository UserRepository;
+    private UsuarioServiceImp UserService;
 
-    @Autowired
-    private CredencialesRepository credencialesRepository;
-
-    @GetMapping("/usuarios")
-    public List<Usuario> listarUsuarios() {
-        return UserRepository.findAll();
+    @GetMapping("/usuarios/{id}")
+    public ResponseEntity<Usuario> obtenerUsuariosPorId(@PathVariable Long id) {
+        return ResponseEntity.ok().body(this.UserService.getUserById(id));
     }
 
-    @GetMapping("/credenciales")
-    public List<Credenciales> listarCredenciales() {
-        return credencialesRepository.findAll();
+    @GetMapping("/usuarios")
+    public List<Usuario> obtenerTodosLosUsuarios() {
+        return this.UserService.getAllUser();
     }
 
     @PostMapping("/usuarios")
-    public Usuario guardarUsuario(@RequestBody Usuario u) {
-        return UserRepository.save(u);
+    public ResponseEntity<Usuario> guardarUsuario(@RequestBody Usuario usuario) {
+        return ResponseEntity.status(HttpStatus.CREATED).body(this.UserService.saveUser(usuario));
+    }
+
+    @PutMapping("/usuarios/{id}")
+    public ResponseEntity<Usuario> actualizarUsuario(@PathVariable Long id, @RequestBody Usuario usuario) {
+
+        Usuario usuarioActualizado = this.UserService.updateUser(usuario, id);
+        return ResponseEntity.ok(usuarioActualizado);
+    }
+
+    @DeleteMapping("/usuarios/{id}")
+    public ResponseEntity<Usuario> eliminarUsuario(@PathVariable Long id) {
+
+        this.UserService.deleteUser(id);
+        return ResponseEntity.ok().build();
+
     }
 
     @GetMapping("/credenciales/{id}")
-    public Credenciales obtenerCredencialById(@PathVariable Long id) {
-
-        Credenciales credencial = credencialesRepository.findById(id)
-                .orElseThrow(() -> new ResourceNotFoundException("No existe el usuario con ese id: " + id));
-
-        return credencial;
+    public ResponseEntity<Credenciales> obtenerCredencialById(@PathVariable Long id) {
+        return ResponseEntity.ok().body(this.UserService.getcredentialById(id));
     }
 
-
-
     @PostMapping("/credenciales")
-    public ResponseEntity<Credenciales> verificarCredenciales(@RequestBody Credenciales requestCredencial) {
+    public ResponseEntity<String> verificarCredenciales(@RequestBody Credenciales requestCredencial) {
 
-        Credenciales credencial = obtenerCredencialById(requestCredencial.getId());
-
-        if (credencial.getId().equals(requestCredencial.getId())) {
-            ResponseEntity.ok("id verificado");
-
-            if (credencial.getEmail().equals(requestCredencial.getEmail())){
-                ResponseEntity.ok("email verificado");
-
-                if (credencial.getPassword().equals(requestCredencial.getPassword())){
-                    ResponseEntity.ok("password verificado");
-                    
-                    ResponseEntity.ok("Credenciales verificadas");
-
-                    return ResponseEntity.ok(credencial);
-
-                } ResponseEntity.ok("Fallo con el password");
-                return null;
-
-            } ResponseEntity.ok("Fallo con el email");
-            return null;
-
-        } ResponseEntity.ok("Fallo con el id");
-        return null;
-}
+        if(this.UserService.verifyCredentials(requestCredencial)){
+            return ResponseEntity.ok("Credenciales Verificadas");
+        }
+        return ResponseEntity.ok("Error al verificar las credenciales");
+    } 
 
 }

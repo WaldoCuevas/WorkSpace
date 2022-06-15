@@ -21,13 +21,7 @@ export class IniciarSesionComponent implements OnInit {
   verificacion() {
     this.servicio.login(this.credenciales).subscribe((dato) => {
       console.log(dato);
-
-      if (this.credenciales.id == dato){
       this.irALaListaDeUsuario();
-      } else {
-        alert('datos invalidos');
-      }
-
     });
   }
 
