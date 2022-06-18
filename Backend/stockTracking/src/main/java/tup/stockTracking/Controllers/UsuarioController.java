@@ -63,12 +63,12 @@ public class UsuarioController {
     }
 
     @PostMapping("/credenciales")
-    public ResponseEntity<String> verificarCredenciales(@RequestBody Credenciales requestCredencial) {
+    public ResponseEntity<Credenciales> verificarCredenciales(@RequestBody Credenciales requestCredencial) {
 
         if(this.UserService.verifyCredentials(requestCredencial)){
-            return ResponseEntity.ok("Credenciales Verificadas");
+            return ResponseEntity.ok(requestCredencial);
         }
-        return ResponseEntity.ok("Error al verificar las credenciales");
+        return ResponseEntity.ok(null);
     } 
 
 }

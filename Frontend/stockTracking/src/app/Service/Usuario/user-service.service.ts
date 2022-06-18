@@ -12,7 +12,7 @@ export class UserServiceService {
 
   private baseUrl = "http://localhost:8080/api/usuarios";
 
-  private urlCredenciales = "http://localhost:8080/api/credenciales/";
+  private urlCredenciales = "http://localhost:8080/api/credenciales";
 
   constructor(private httpClient: HttpClient) { }
 
@@ -24,11 +24,7 @@ export class UserServiceService {
     return this.httpClient.post(`${this.baseUrl}`, usuario);
   }
 
-  getListaCredenciales(): Observable<Credenciales[]> {
-    return this.httpClient.get<Credenciales[]>(`${this.urlCredenciales}`);
-  }
-
-  login(credencial:Credenciales): Observable<Object> {
+  login(credencial:Credenciales): Observable<any> {
     return this.httpClient.post(`${this.urlCredenciales}`,credencial);
   }
 
