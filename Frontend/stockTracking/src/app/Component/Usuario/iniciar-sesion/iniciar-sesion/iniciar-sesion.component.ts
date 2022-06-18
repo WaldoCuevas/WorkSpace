@@ -23,13 +23,7 @@ export class IniciarSesionComponent implements OnInit {
   verificacion() {
     this.servicio.login(this.credenciales).subscribe((dato) => {
 
-      //this.credenciales = dato;
-
-      console.log("credenciales "+ this.credenciales.id);
-      console.log("credenciales "+ this.credenciales.email);
-      console.log("credenciales "+ this.credenciales.password);
-
-      if (this.credenciales != null){
+      if (dato != null){
         alert('Credenciales verificadas!');
       this.irALaListaDeUsuario();
       } else {

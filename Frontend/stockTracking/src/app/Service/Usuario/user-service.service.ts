@@ -24,8 +24,8 @@ export class UserServiceService {
     return this.httpClient.post(`${this.baseUrl}`, usuario);
   }
 
-  login(credencial:Credenciales): Observable<any> {
-    return this.httpClient.post(`${this.urlCredenciales}`,credencial);
+  login(credencial:Credenciales): Observable<Credenciales> {
+    return this.httpClient.post<Credenciales>(`${this.urlCredenciales}`,credencial);
   }
 
 }
