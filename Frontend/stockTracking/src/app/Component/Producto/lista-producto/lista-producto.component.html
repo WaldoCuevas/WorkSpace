@@ -1,36 +1,34 @@
 <h2>Lista de Productos</h2>
 
-<table class="table table-striped">
-  <thead class="table-dark">
-    <tr>
-      <th>ID</th>
-      <th>Nombre</th>
-      <th>Descripcion</th>
-      <th>Cantidad</th>
-      <th>Unidad</th>
-      <th>Acciones</th>
-    </tr>
-  </thead>
+<div class="container">
+  <table class="table table-striped">
+    <thead class="table-dark">
+      <tr>
+        <th>ID</th>
+        <th>Nombre</th>
+        <th>Descripcion</th>
+        <th>Cantidad</th>
+        <th>Unidad</th>
+        <th>Acciones</th>
+      </tr>
+    </thead>
 
-  <tbody>
-    <tr *ngFor="let producto of productos">
-      <td>{{ producto.id }}</td>
-      <td>{{ producto.nombre }}</td>
-      <td>{{ producto.descripcion }}</td>
-      <td>{{ producto.cantidad }}</td>
-      <td>{{ producto.unidad }}</td>
-      <td>
-        <button (click)="actualizarProducto(producto.id)" class="btn btn-info">
-          Actualizar
-        </button>
-        <button
-          (click)="eliminarProducto(producto.id)"
-          class="btn btn-danger"
-          style="margin-left: 10px"
-        >
-          Eliminar
-        </button>
-      </td>
-    </tr>
-  </tbody>
-</table>
+    <tbody>
+      <tr *ngFor="let producto of productos">
+        <td>{{ producto.id }}</td>
+        <td>{{ producto.nombre }}</td>
+        <td>{{ producto.descripcion }}</td>
+        <td>{{ producto.cantidad }}</td>
+        <td>{{ producto.unidad }}</td>
+        <td>
+          <button (click)="actualizarProducto(producto.id)" class="btn btn-info">
+            Actualizar
+          </button>
+          <button (click)="eliminarProducto(producto.id)" class="btn btn-danger" style="margin-left: 10px">
+            Eliminar
+          </button>
+        </td>
+      </tr>
+    </tbody>
+  </table>
+</div>

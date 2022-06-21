@@ -1,20 +1,21 @@
-<h2 class="text-center">Iniciar Sesion</h2>
-<div class="col-md-6 offset-md-3">
-  <form (ngSubmit)="iniciarSesion()">
+<div class="container">
+  <h2 class="text-center">Iniciar Sesion</h2>
+  <div class="col-md-6 offset-md-3">
+    <form (ngSubmit)="iniciarSesion()">
       <div class="form-group">
-          <label>id: </label>
-          <input type="number" class="form-control" id="id" [(ngModel)] = "credenciales.id" name="id">
-          <label>Nombre de usuario: </label>
-          <input type="email" class="form-control" id="email" [(ngModel)] = "credenciales.email" name="email">
-          <label style="margin-top: 15px;">Contraseña: </label>
-          <input type="password" class="form-control" id="password" [(ngModel)] = "credenciales.password" name="password">
+        <label>id: </label>
+        <input type="number" class="form-control" id="id" [(ngModel)]="credenciales.id" name="id">
+        <label>Nombre de usuario: </label>
+        <input type="email" class="form-control" id="email" [(ngModel)]="credenciales.email" name="email">
+        <label style="margin-top: 15px;">Contraseña: </label>
+        <input type="password" class="form-control" id="password" [(ngModel)]="credenciales.password" name="password">
       </div>
       <div>
-        <button class="btn btn-success" style="margin: 20px 20px 10px 0px;" >Entrar</button>
-        <section>¿No tienes una? <a href="registrar-usuario" >¡Registrate!</a></section>
+        <button class="btn btn-success" style="margin: 20px 20px 10px 0px;">Entrar</button>
+        <section>¿No tienes una? <a href="registrar-usuario">¡Registrate!</a></section>
       </div>
 
-  </form>
+    </form>
+  </div>
+
 </div>
-
-

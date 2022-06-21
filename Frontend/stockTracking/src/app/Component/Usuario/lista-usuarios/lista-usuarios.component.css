@@ -1,0 +1,6 @@
+.myTable {
+    margin: 0 auto;
+    height: 400px;
+    width: 100%;
+    overflow: scroll;
+}

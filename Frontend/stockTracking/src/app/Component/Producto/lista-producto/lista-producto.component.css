@@ -1,3 +1,13 @@
 h2 {
   color: rgb(0, 0, 0);
+  text-align: center;
+  margin-top: 1rem;
+  margin-bottom: 4rem;
+}
+
+.container {
+  margin: auto;
+  height: 400px;
+  width: 100%;
+  overflow-y: scroll;
 }
